@@ -35,11 +35,11 @@ jobs:
             fi
 
             # Vérifier si le répertoire existe, sinon le cloner
-            if [ ! -d ~/dockerhub_test/my-app ]; then
+            if [ ! -d ~/dockerhub_test/ ]; then
               mkdir -p ~/dockerhub_test
-              git clone --branch develop ${{ secrets.REPO_GIT }} ~/dockerhub_test/my-app
+              git clone --branch develop ${{ secrets.REPO_GIT }} ~/dockerhub_test/
             else
-              cd ~/dockerhub_test/my-app
+              cd ~/dockerhub_test/
               # Réinitialiser les changements locaux à l'état de la branche distante
               git fetch origin
               git reset --hard origin/develop
@@ -58,7 +58,7 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/dockerhub_test/my-app
+            cd ~/dockerhub_test/
             sudo docker-compose down
             sudo docker-compose build --parallel
 
@@ -70,5 +70,5 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/dockerhub_test/my-app
+            cd ~/dockerhub_test/
             sudo  docker-compose up -d
