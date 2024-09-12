@@ -70,4 +70,4 @@ jobs:
           script: |
             cd ~/dockerhub_test
             sudo  docker build -t dockerhub_test:1.0 .
-            sudo  docker run --name dockerhub_test -d -p 3001:3001 dockerhub_test:1.0
+            sudo  docker run --name dockerhub_test -d -p 8080:80 dockerhub_test:1.0
