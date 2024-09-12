@@ -37,12 +37,11 @@ jobs:
             # Vérifier si le répertoire existe, sinon le cloner
             if [ ! -d ~/dockerhub_test/ ]; then
               mkdir -p ~/dockerhub_test
-              git clone --branch develop ${{ secrets.REPO_GIT }} ~/dockerhub_test/
+              git clone --branch main ${{ secrets.REPO_GIT }} ~/dockerhub_test/
             else
               cd ~/dockerhub_test/
               # Réinitialiser les changements locaux à l'état de la branche distante
-              git fetch origin
-              git reset --hard origin/develop
+              git pull origin main
             fi
 
   build-and-run-on-vps:
