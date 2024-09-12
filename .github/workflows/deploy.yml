@@ -31,7 +31,7 @@ jobs:
             # Supprimer tous les conteneurs s'ils existent
             containers=$(sudo docker ps -a -q)
             if [ -n "$containers" ]; then
-              #sudo docker rm $containers
+              sudo docker rm $containers
             fi
 
             # Vérifier si le répertoire existe, sinon le cloner
