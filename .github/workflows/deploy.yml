@@ -37,7 +37,7 @@ jobs:
             # Vérifier si le répertoire existe, sinon le cloner
             if [ ! -d ~/dockerhub_test ]; then
               mkdir -p ~/dockerhub_test
-              sudo git clone --branch main ${{ secrets.REPO_GIT }} ~/dockerhub_test
+              sudo git clone --branch main  ${{ secrets.REPO_GIT }} ~/dockerhub_test
             else
               cd ~/dockerhub_test
               # Réinitialiser les changements locaux à l'état de la branche distante

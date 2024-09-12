@@ -1,6 +1,6 @@
 ## Create repo 
 
-- with workflow 
+- with workflow file 
 - Dockerfile
 
 ## tag version 
