@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Exposer le port utilisé par l'application
-EXPOSE 8080
+EXPOSE 3001
 
 # Exécuter la commande pour les migrations et démarrer l'application
 CMD ["npm", "run","start"]
