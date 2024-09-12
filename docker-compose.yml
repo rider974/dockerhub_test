@@ -3,7 +3,7 @@
 services: 
 
   api:
-    build: ./api
+    build: ./back
     restart: always
     ports:
       - "3001:3001"
