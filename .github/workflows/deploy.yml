@@ -58,4 +58,5 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             cd ~/dockerhub_test
+            sudo docker compose down 
             sudo docker compose up --build -d 
