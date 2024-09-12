@@ -31,17 +31,17 @@ jobs:
             # Supprimer tous les conteneurs s'ils existent
             containers=$(sudo docker ps -a -q)
             if [ -n "$containers" ]; then
-              sudo docker rm $containers
+              #sudo docker rm $containers
             fi
 
             # Vérifier si le répertoire existe, sinon le cloner
             if [ ! -d ~/dockerhub_test ]; then
               mkdir -p ~/dockerhub_test
-              git clone --branch main ${{ secrets.REPO_GIT }} ~/dockerhub_test
+              sudo git clone --branch main ${{ secrets.REPO_GIT }} ~/dockerhub_test
             else
               cd ~/dockerhub_test
               # Réinitialiser les changements locaux à l'état de la branche distante
-              git pull origin main
+              sudo git pull origin main
             fi
 
   build-and-run-on-vps:
