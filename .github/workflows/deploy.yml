@@ -35,11 +35,11 @@ jobs:
             fi
 
             # Vérifier si le répertoire existe, sinon le cloner
-            if [ ! -d ~/dockerhub_test/ ]; then
+            if [ ! -d ~/dockerhub_test ]; then
               mkdir -p ~/dockerhub_test
-              git clone --branch main ${{ secrets.REPO_GIT }} ~/dockerhub_test/
+              git clone --branch main ${{ secrets.REPO_GIT }} ~/dockerhub_test
             else
-              cd ~/dockerhub_test/
+              cd ~/dockerhub_test
               # Réinitialiser les changements locaux à l'état de la branche distante
               git pull origin main
             fi
@@ -57,9 +57,8 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/dockerhub_test/
-            sudo docker-compose down
-            sudo docker-compose build --parallel
+            cd ~/dockerhub_test
+            sudo docker build -t dockerhub_test:1.0 .
 
       - name: Start Docker Containers
         uses: appleboy/ssh-action@v0.1.8
@@ -69,5 +68,5 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/dockerhub_test/
-            sudo  docker-compose up -d
+            cd ~/dockerhub_test
+            sudo  docker build -t dockerhub_test:1.0 .
